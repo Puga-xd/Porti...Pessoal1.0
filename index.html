@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portifólio do Vitor Hugo Puga</title>
+    <style>
+        /* --- ESTILO PARA O NAVEGADOR --- */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: #1a252f;
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        header h1 { font-size: 2.8em; margin: 0; font-weight: 700; }
+        header h2 { font-size: 2.2em; margin: 10px 0 0 0; font-weight: 600; }
+
+        .projeto {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+            background: #3498db;
+            padding: 12px 25px;
+            display: inline-block;
+            border-radius: 8px;
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .historia {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 6px solid #3498db;
+            border-radius: 5px;
+        }
+
+        .contatos {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        .btn-pdf {
+            display: block;
+            width: fit-content;
+            margin: 50px auto;
+            padding: 18px 45px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* --- MÁGICA DO PDF (IMPRESSÃO) --- */
+        @media print {
+            .btn-pdf { display: none; }
+            body { background: white; padding: 0; }
+            
+            /* Garante que os projetos fiquem na primeira página */
+            section#meus-projetos {
+                page-break-after: always; /* Força a quebra de página após os projetos */
+            }
+
+            /* Garante que o contato comece em uma nova página */
+            section.contatos {
+                page-break-before: always;
+                margin-top: 0;
+                border: none;
+            }
+
+            header { background: #1a252f !important; color: white !important; -webkit-print-color-adjust: exact; }
+            summary { display: none; }
+            details { display: block !important; }
+            .historia { display: block !important; border: none; padding: 0; }
+            .projeto { box-shadow: none; border: 1px solid #eee; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Portifólio</h1>
+        <h2>Vitor Hugo Puga</h2>
+    </header>
+
+    <section id="meus-projetos">
+        <div class="projeto">
+            <h3>Projeto 1: Técnico em consertar vídeo games e aparelhos eletrônicos</h3>
+            <details>
+                <summary>Ver história</summary>
+                <div class="historia">
+                    <p>Comecei a me interessar por tecnologia ainda novo, desmontando pela primeira vez um umidificador aos 12 anos. Mais velho, foquei no universo dos games e me tornei técnico especializado. Hoje, realizo a manutenção dos meus próprios consoles e trabalho profissionalmente com o reparo de dispositivos eletrônicos.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="projeto">
+            <h3>Projeto 2: Minha história com software e desenvolvimento web</h3>
+            <details>
+                <summary>Ver história</summary>
+                <div class="historia">
+                    <p>Minha trajetória no desenvolvimento começou no Ensino Médio, onde aprendi as bases de <strong>HTML, CSS e JavaScript</strong>. Desde então, mantenho uma rotina de evolução constante, buscando dominar as ferramentas essenciais para construir soluções web modernas e eficientes.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="projeto">
+            <h3>Projeto 3: Visão de Carreira e Evolução Profissional</h3>
+            <details>
+                <summary>Ver história</summary>
+                <div class="historia">
+                    <p>Enxergo a programação como um caminho próspero. Acredito que é uma área que me permite evoluir continuamente e criar projetos de impacto. Busco sempre aprofundar meus conhecimentos no que realmente gosto, focando em transformar aprendizado em resultados reais para o mercado.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="contatos">
+        <h3>Contato</h3>
+        <div class="links">
+            <p>📧 Email: <strong>vitorhugopuga3@gmail.com</strong></p>
+            <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/vitor-hugo-puga-ba120538a" target="_blank">Perfil Profissional</a></p>
+            <p>💻 GitHub: <a href="https://github.com/pugaxd" target="_blank">puga xd</a></p>
+        </div>
+    </section>
+
+    <button class="btn-pdf" onclick="gerarPDF()">Baixar tudo em PDF</button>
+
+    <script>
+        function gerarPDF() {
+            // Abre todos os detalhes para o texto aparecer no PDF
+            const docs = document.querySelectorAll('details');
+            docs.forEach((d) => { d.open = true; });
+            
+            // Aguarda um instante para o navegador processar a abertura e chama a impressão
+            setTimeout(() => {
+                window.print();
+            }, 250);
+        }
+    </script>
+
+</body>
+</html>
 
